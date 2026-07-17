@@ -1,0 +1,774 @@
+
+
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Guest information and booking details for The Old Doctor's Manor House in Whitstable.">
+  <title>The Old Doctor's Manor House | Whitstable</title>
+
+  <style>
+    /* Put your font file at assets/CooperBlack.woff2 */
+    @font-face {
+      font-family: "Cooper Black";
+      src: url("assets/CooperBlack.woff2") format("woff2");
+      font-display: swap;
+    }
+
+    :root {
+      --cream: #fff1cd;
+      --cream-light: #fff9e9;
+      --teal: #075765;
+      --teal-dark: #043f49;
+      --orange: #d96028;
+      --mustard: #eca126;
+      --ink: #18393e;
+      --white: #fffdf8;
+      --shadow: 0 10px 30px rgba(4, 63, 73, .12);
+      --radius: 22px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--cream-light);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 17px;
+      line-height: 1.6;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: var(--teal); }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, .display {
+      font-family: "Cooper Black", Georgia, serif;
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: .01em;
+    }
+    h2 { color: var(--teal); font-size: clamp(2rem, 5vw, 3.4rem); margin-bottom: 18px; }
+    h3 { color: var(--teal-dark); line-height: 1.25; }
+    section { padding: 76px 20px; }
+    .wrap { width: min(100%, var(--max)); margin: 0 auto; }
+    .eyebrow {
+      color: var(--orange);
+      font-size: .8rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .intro { max-width: 760px; font-size: 1.14rem; }
+    .muted { color: #537075; }
+    .notice {
+      margin: 22px 0;
+      padding: 16px 18px;
+      border-left: 6px solid var(--mustard);
+      border-radius: 8px 16px 16px 8px;
+      background: #fff5d9;
+    }
+
+    /* Navigation */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 249, 233, .96);
+      border-bottom: 1px solid rgba(7, 87, 101, .12);
+      backdrop-filter: blur(12px);
+    }
+    .nav-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 10px 20px;
+    }
+    .brand {
+      color: var(--teal);
+      font-family: "Cooper Black", Georgia, serif;
+      font-size: 1.1rem;
+      line-height: 1;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a {
+      padding: 10px 11px;
+      color: var(--ink);
+      border-radius: 999px;
+      font-size: .9rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .nav-links a:hover, .nav-links a:focus-visible { background: var(--cream); color: var(--teal); }
+    .menu-button {
+      display: none;
+      padding: 10px 14px;
+      color: var(--white);
+      background: var(--teal);
+      border: 0;
+      border-radius: 999px;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: min(780px, 82vh);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background: var(--cream);
+      isolation: isolate;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(180deg, rgba(255,241,205,.08), rgba(4,63,73,.12));
+    }
+    .hero-image {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .hero-copy {
+      width: min(950px, calc(100% - 40px));
+      padding: 34px 24px;
+      text-align: center;
+      transform: translateY(-25%);
+    }
+    .hero h1 {
+      margin: 0 auto 18px;
+      color: var(--teal);
+      font-size: clamp(2.8rem, 8vw, 6.9rem);
+      text-shadow: 0 2px 0 rgba(255, 255, 255, .35);
+    }
+    .hero-subtitle {
+      display: inline-block;
+      margin-bottom: 24px;
+      padding: 6px 14px;
+      color: var(--teal-dark);
+      background: rgba(255, 249, 233, .82);
+      border-radius: 999px;
+      font-weight: 800;
+    }
+    .button-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 12px 20px;
+      color: var(--white);
+      background: var(--teal);
+      border: 2px solid var(--teal);
+      border-radius: 999px;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 6px 0 var(--teal-dark);
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .button:hover { transform: translateY(2px); box-shadow: 0 4px 0 var(--teal-dark); }
+    .button.alt { color: var(--teal-dark); background: var(--mustard); border-color: var(--mustard); box-shadow: 0 6px 0 #b86b18; }
+
+    /* Cards */
+    .cream-section { background: var(--cream); }
+    .teal-section { color: var(--white); background: var(--teal); }
+    .teal-section h2, .teal-section h3, .teal-section a { color: var(--white); }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .grid.two { grid-template-columns: repeat(2, 1fr); }
+    .card {
+      padding: 25px;
+      background: var(--white);
+      border: 1px solid rgba(7, 87, 101, .12);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .card p:last-child, .card ul:last-child { margin-bottom: 0; }
+    .icon {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 15px;
+      border-radius: 50%;
+      color: var(--teal);
+      background: var(--cream);
+      font-size: 1.45rem;
+    }
+    .card h3 { margin-bottom: 8px; }
+    .facts { margin-top: -115px; position: relative; z-index: 5; padding-top: 0; }
+    .facts .card { text-align: center; }
+    .facts strong { display: block; color: var(--orange); font-family: "Cooper Black", Georgia, serif; font-size: 2rem; }
+
+    /* Quick links */
+    .quick-links { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 28px; }
+    .quick-links a {
+      padding: 17px 14px;
+      color: var(--teal-dark);
+      background: var(--white);
+      border: 2px solid rgba(7, 87, 101, .14);
+      border-radius: 15px;
+      font-weight: 800;
+      text-align: center;
+      text-decoration: none;
+    }
+    .quick-links a:hover { border-color: var(--mustard); background: #fff8e5; }
+
+    /* Expandable guide */
+    .accordion { display: grid; gap: 13px; margin-top: 30px; }
+    details {
+      background: var(--white);
+      border: 1px solid rgba(7, 87, 101, .14);
+      border-radius: 16px;
+      box-shadow: 0 5px 18px rgba(4, 63, 73, .07);
+      overflow: hidden;
+    }
+    summary {
+      position: relative;
+      padding: 20px 55px 20px 22px;
+      color: var(--teal-dark);
+      font-size: 1.08rem;
+      font-weight: 800;
+      cursor: pointer;
+      list-style: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: "+";
+      position: absolute;
+      right: 21px;
+      top: 50%;
+      color: var(--orange);
+      font-size: 1.7rem;
+      transform: translateY(-52%);
+    }
+    details[open] summary::after { content: "−"; }
+    .details-content { padding: 0 22px 22px; }
+    .details-content > :last-child { margin-bottom: 0; }
+
+    /* Checklists and listings */
+    .checklist { padding: 0; list-style: none; }
+    .checklist li { position: relative; padding: 11px 0 11px 38px; border-bottom: 1px solid rgba(7,87,101,.13); }
+    .checklist li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 26px;
+      height: 26px;
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      background: var(--teal);
+      border-radius: 50%;
+      font-weight: 900;
+    }
+    .place-list { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .place { padding: 18px 0; border-top: 1px solid rgba(7, 87, 101, .18); }
+    .place h3 { margin-bottom: 2px; font-size: 1rem; }
+    .place p { margin-bottom: 4px; font-size: .94rem; }
+    .placeholder { border: 2px dashed rgba(7, 87, 101, .3); background: rgba(255,255,255,.5); box-shadow: none; }
+
+    /* Booking */
+    .booking-layout { display: grid; grid-template-columns: 1.05fr .95fr; gap: 45px; align-items: center; }
+    .feature-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 0; list-style: none; }
+    .feature-list li { padding: 13px 14px; color: var(--teal-dark); background: var(--cream); border-radius: 12px; font-weight: 700; }
+    .image-placeholder {
+      min-height: 440px;
+      display: grid;
+      place-items: center;
+      padding: 25px;
+      color: var(--teal);
+      background: #f5dca9;
+      border: 3px dashed rgba(7, 87, 101, .35);
+      border-radius: var(--radius);
+      text-align: center;
+      font-weight: 800;
+    }
+
+    footer { padding: 46px 20px; color: var(--cream); background: var(--teal-dark); }
+    footer a { color: var(--cream); }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 35px; }
+    .footer-title { font-family: "Cooper Black", Georgia, serif; font-size: 1.6rem; }
+    .small { font-size: .85rem; }
+
+    @media (max-width: 920px) {
+      .menu-button { display: block; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 72px;
+        left: 12px;
+        right: 12px;
+        padding: 12px;
+        background: var(--white);
+        border-radius: 18px;
+        box-shadow: var(--shadow);
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 12px 15px; }
+      .grid, .quick-links { grid-template-columns: repeat(2, 1fr); }
+      .booking-layout { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 620px) {
+      body { font-size: 16px; }
+      section { padding: 58px 17px; }
+      .brand { max-width: 220px; }
+      .hero { min-height: 670px; }
+      .hero-image { object-position: center bottom; }
+      .hero-copy { align-self: start; padding-top: 70px; transform: none; }
+      .hero h1 { font-size: clamp(2.5rem, 14vw, 4.5rem); }
+      .facts { margin-top: -60px; }
+      .grid, .grid.two, .quick-links, .place-list, .feature-list, .footer-grid { grid-template-columns: 1fr; }
+      .facts .grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+      .facts .card { padding: 16px 8px; border-radius: 14px; }
+      .facts strong { font-size: 1.35rem; }
+      .facts span { font-size: .76rem; line-height: 1.2; display: block; }
+      .button-row { align-items: stretch; flex-direction: column; }
+      .button { width: 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="nav-inner wrap" aria-label="Main navigation">
+      <a class="brand" href="#top">The Old Doctor’s Manor House</a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <div class="nav-links" id="nav-links">
+        <a href="#welcome">Welcome</a>
+        <a href="#essentials">Arrival</a>
+        <a href="#house-guide">House guide</a>
+        <a href="#kitchen">Kitchen</a>
+        <a href="#local">Local area</a>
+        <a href="#checkout">Check-out</a>
+        <a href="#booking">About the house</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <img class="hero-image" src="assets/house-hero-wide.png" alt="Illustration of The Old Doctor's Manor House">
+      <div class="hero-copy">
+        <p class="hero-subtitle">Whitstable, Kent</p>
+        <h1 id="hero-title">Welcome to<br>The Old Doctor’s Manor House!</h1>
+        <div class="button-row">
+          <a class="button" href="#essentials">I’m staying here</a>
+          <a class="button alt" href="#booking">I’m thinking of booking</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="facts" aria-label="House facts">
+      <div class="wrap grid">
+        <div class="card"><strong>15</strong><span>guests</span></div>
+        <div class="card"><strong>5</strong><span>bedrooms</span></div>
+        <div class="card"><strong>5</strong><span>en-suite bathrooms</span></div>
+      </div>
+    </section>
+
+    <section id="welcome">
+      <div class="wrap">
+        <p class="eyebrow">Make yourself at home</p>
+        <h2>Welcome!</h2>
+        <div class="intro">
+          <p>We really hope you have a lovely stay. You’re probably here with a big group and ready to have fun.</p>
+          <p>The house is designed to remove the worry of staying in somebody else’s home. You don’t need to tiptoe around—relax and enjoy it.</p>
+          <p>We’ve made the house robust, easy to clean and comfortable for large groups. Things occasionally get spilled or broken. Just tell us so we can sort them out.</p>
+        </div>
+
+        <div class="quick-links" aria-label="Guest quick links">
+          <a href="#wifi">Wi-Fi</a>
+          <a href="#entry">Getting in</a>
+          <a href="#hot-tub">Hot tub</a>
+          <a href="#cinema">Cinema room</a>
+          <a href="#kitchen">Kitchen</a>
+          <a href="#noise">Noise curfews</a>
+          <a href="#emergency">Medical help</a>
+          <a href="#checkout">Check-out</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="cream-section" id="essentials">
+      <div class="wrap">
+        <p class="eyebrow">The useful stuff</p>
+        <h2>Arrival and essentials</h2>
+        <div class="grid two">
+          <article class="card">
+            <div class="icon" aria-hidden="true">⌂</div>
+            <h3>Address</h3>
+            <p>59 Northwood Road<br>Whitstable<br>CT5 2HA</p>
+            <p><strong>what3words:</strong> <a href="https://what3words.com/risks.fight.jaws">risks.fight.jaws</a></p>
+            <p>Free street parking is available. Whitstable station is a 10–15 minute uphill walk.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon" aria-hidden="true">☎</div>
+            <h3>Contact during your stay</h3>
+            <p>You should already have contact details in your booking information.</p>
+            <p><strong>Email:</strong> <a href="mailto:jmsflms@gmail.com">jmsflms@gmail.com</a><br>
+              <strong>WhatsApp:</strong> <a href="https://wa.me/17259105068">+1 725 910 5068</a></p>
+          </article>
+
+          <article class="card" id="wifi">
+            <div class="icon" aria-hidden="true">⌁</div>
+            <h3>Wi-Fi</h3>
+            <p><strong>Network:</strong> 1202099_Trooli</p>
+            <p><strong>Password:</strong> <span id="wifi-password">••••••••••••</span></p>
+            <button class="button" id="show-password" type="button" style="min-height:42px;padding:8px 15px;box-shadow:none">Show password</button>
+          </article>
+
+          <article class="card" id="entry">
+            <div class="icon" aria-hidden="true">⌑</div>
+            <h3>Key and entry</h3>
+            <p>You should have been given the lockbox code separately.</p>
+            <p>There is one key and it lives in the lockbox. Please open the door, then put the key straight back so everyone in your group can get in.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="house-guide">
+      <div class="wrap">
+        <p class="eyebrow">How everything works</p>
+        <h2>House guide</h2>
+        <p class="intro">Tap any heading for the details. If something isn’t working, please contact us rather than wrestling with it.</p>
+
+        <div class="accordion">
+          <details id="noise" open>
+            <summary>Noise and curfews</summary>
+            <div class="details-content">
+              <p>Please don’t be noisy in the garden or hot tub after <strong>midnight on Fridays and Saturdays</strong>, or after <strong>10:30pm on weekdays</strong>.</p>
+              <p>The cinema room, dining room and games room are good places for late-night chats.</p>
+            </div>
+          </details>
+
+          <details id="hot-tub">
+            <summary>Hot tub</summary>
+            <div class="details-content">
+              <p>The hot tub is cleaned and treated before and after every visit. It is left cooler between stays, so allow an hour or two for it to warm up.</p>
+              <ul>
+                <li>Use the arrows beside the display to adjust the temperature.</li>
+                <li>The other buttons control the jets and lights.</li>
+                <li>Please shower off sun lotion, moisturiser, make-up and excess soap first.</li>
+                <li>Never take glass into the hot tub. Plastic glasses are provided.</li>
+                <li>If the water falls below the jets, use the hose to top it up—unless a hosepipe ban is in force.</li>
+              </ul>
+              <p>Testing strips, de-foamer and a small water vacuum are available. Never put the vacuum’s charging connection in the water unless it is fully sealed.</p>
+              <p><a href="https://www.southeastwater.co.uk/">Check South East Water restrictions</a></p>
+            </div>
+          </details>
+
+          <details id="cinema">
+            <summary>Cinema room</summary>
+            <div class="details-content">
+              <p>The wall buttons raise and lower the projector screen. The small black Amazon Fire TV remote should control both the Fire TV and projector; its blue button turns them on.</p>
+              <p>Please leave all remotes in the cinema room. The large sofa can also be used as an extra bed.</p>
+              <div class="notice"><strong>Holding text:</strong> More troubleshooting instructions and a photograph of the controls will be added here.</div>
+            </div>
+          </details>
+
+          <details>
+            <summary>Music, Alexa and dining-room TV</summary>
+            <div class="details-content">
+              <p>There are Alexa speakers downstairs connected to our Spotify account. We won’t judge your music if you don’t judge ours.</p>
+              <p>The dining room has a smart TV suitable for video calls and presentations. Please leave its remote in the room.</p>
+              <div class="notice"><strong>Holding text:</strong> Video-conferencing and screen-sharing instructions will be added here.</div>
+            </div>
+          </details>
+
+          <details>
+            <summary>Heating and hot water</summary>
+            <div class="details-content">
+              <p>The house has gas central heating, assisted by solar thermal panels. The Nest thermostat is the small circular display in the ground-floor hallway.</p>
+              <p>Each room has a thermostatic radiator and an electric fan heater. Please contact us before touching the commercial boiler.</p>
+            </div>
+          </details>
+
+          <details>
+            <summary>Doors, windows and garden lighting</summary>
+            <div class="details-content">
+              <p>To lock the garden door, lift the handle while turning the key. Please lock doors and close windows when leaving valuables in the house.</p>
+              <p>The garden lights normally come on around sunset and switch off at 10pm. Their power supply is in the larger garden shed, but you should not normally need to access it.</p>
+            </div>
+          </details>
+
+          <details>
+            <summary>Rubbish and recycling</summary>
+            <div class="details-content">
+              <p>The silver kitchen bin is for general waste. Please put rubbish inside the two bin liners rather than directly into the bin.</p>
+              <p>Large bags are provided for glass and paper. If anything becomes full or smelly, the outside bins are at the front of the house, to the right.</p>
+              <p>Collection is on Monday. If you leave Sunday evening or Monday morning, putting the bins out would be very helpful, but it is not required.</p>
+            </div>
+          </details>
+
+          <details>
+            <summary>Breakages and stains</summary>
+            <div class="details-content">
+              <p>Accidents happen. Please tell us about breakages or stains so we know what needs fixing or replacing.</p>
+              <p>Please don’t jump on the beds, and be especially careful with red wine near the white bedding. Stain removers are in the laundry room.</p>
+              <p>Wine glasses have surprisingly short lives here. If there is a full-scale wine-glass massacre, we would appreciate replacements.</p>
+            </div>
+          </details>
+
+          <details>
+            <summary>Towels, laundry and supplies</summary>
+            <div class="details-content">
+              <p>Indoor and outdoor towels are provided. To save energy, we appreciate guests bringing their own when convenient.</p>
+              <p>We provide an initial supply of toilet paper, kitchen roll and cleaning products. Please don’t take our towels home.</p>
+              <p>The washing machine adds detergent and conditioner automatically. We recommend TurboWash with the spin set to 1400.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="cream-section" id="kitchen">
+      <div class="wrap">
+        <p class="eyebrow">Feeding a crowd</p>
+        <h2>Kitchen</h2>
+        <div class="notice"><strong>Milk:</strong> We don’t provide milk because the house is sometimes empty for several days.</div>
+
+        <div class="accordion">
+          <details open>
+            <summary>Coffee machine</summary>
+            <div class="details-content">
+              <p>The machine is mainly for making large pots of filter coffee. Labels on the machine will guide you. The reusable filter can be rinsed or put in the dishwasher; no paper filter is needed.</p>
+              <p>The espresso function is best used by people familiar with this type of machine. You will need to bring your preferred espresso coffee.</p>
+            </div>
+          </details>
+
+          <details>
+            <summary>Range cooker, gas hobs and ovens</summary>
+            <div class="details-content">
+              <p>If the cooker hasn’t been used recently, the gas can take a while to reach it. Please persevere. The built-in spark works, and lighters are also kept nearby.</p>
+              <p>The gas ovens light using the control knobs.</p>
+            </div>
+          </details>
+
+          <details>
+            <summary>Electric oven</summary>
+            <div class="details-content">
+              <p>The left knob selects the type of heat and the right knob controls temperature. The oven tends to run cool, so check the independent thermometer inside. As a general guide, add about 20°C.</p>
+            </div>
+          </details>
+
+          <details>
+            <summary>Microwave</summary>
+            <div class="details-content">
+              <p>For simple heating, repeatedly press the small diamond button to add 30 seconds.</p>
+            </div>
+          </details>
+
+          <details>
+            <summary>Air fryer</summary>
+            <div class="details-content">
+              <p>The large air fryer is excellent for cooking for a group.</p>
+              <p><a href="https://www.youtube.com/watch?v=ZVW_aR_SCfY&amp;t=51s">Watch the video instructions</a></p>
+            </div>
+          </details>
+
+          <details>
+            <summary>Dishwashers and glassware</summary>
+            <div class="details-content">
+              <p>There are two dishwashers. Please use plastic glasses outdoors and around the hot tub.</p>
+              <div class="notice"><strong>Temporary notice:</strong> One dishwasher is currently awaiting parts. Remove this message when it has been repaired.</div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="local">
+      <div class="wrap">
+        <p class="eyebrow">Around Whitstable</p>
+        <h2>Local area</h2>
+        <p class="intro">Tankerton High Street is about two minutes away. Whitstable Harbour and the seafront are around a 10-minute walk. Please check opening hours before travelling.</p>
+
+        <div class="grid two" style="margin-top:30px">
+          <article class="card">
+            <h3>Taxis</h3>
+            <div class="place-list">
+              <div class="place"><h3>Whitstable Taxis</h3><p><a href="tel:01227262120">01227 262120</a></p></div>
+              <div class="place"><h3>Ace Taxis</h3><p><a href="tel:01227277745">01227 277745</a></p></div>
+            </div>
+            <p class="muted small">Uber is not reliable here, although food-delivery apps usually work.</p>
+          </article>
+
+          <article class="card">
+            <h3>Bars and restaurants</h3>
+            <div class="place">
+              <h3>Ales &amp; Blooms</h3><p>Micro pub · 136 Tankerton Road, CT5 2AN</p>
+            </div>
+            <div class="place">
+              <h3>Tankerton Arms</h3><p>Micro pub · 35 Tankerton Road, CT5 2AW</p>
+            </div>
+            <div class="place">
+              <h3>Marine Hotel</h3><p>Hotel, pub and restaurant · 32–33 Marine Parade, CT5 2BE</p>
+            </div>
+            <div class="place">
+              <h3>Land &amp; Sea</h3><p>Restaurant · 139D Tankerton Road, CT5 2AW</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Shops</h3>
+            <div class="place"><h3>Tesco Express</h3><p>41 Tankerton Road, CT5 2AW</p></div>
+            <div class="place"><h3>Corner shop</h3><p>112 Tankerton Road, CT5 2A</p></div>
+            <div class="place"><h3>Tesco Superstore</h3><p>Millstrood Road, Whitstable</p></div>
+          </article>
+
+          <article class="card placeholder">
+            <h3>Things to do</h3>
+            <p><strong>Holding text:</strong> Add recommendations for the harbour, Tankerton Slopes, beach walks, oyster trips, Whitstable Castle, galleries, paddleboarding and favourite independent shops.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="teal-section" id="emergency">
+      <div class="wrap">
+        <p class="eyebrow" style="color:#ffc351">If you need help</p>
+        <h2>Medical care and emergencies</h2>
+        <div class="grid two">
+          <article>
+            <h3>Estuary View Urgent Treatment Centre</h3>
+            <p>Boorman Way, Whitstable, Kent, CT5 3SE<br>Walk in without an appointment<br>Open daily, 8am–8pm<br><a href="tel:01227284309">01227 284309</a></p>
+          </article>
+          <article>
+            <h3>Tankerton Pharmacy</h3>
+            <p>99 Tankerton Road, Tankerton, CT5 2AJ<br><a href="tel:01227272336">01227 272336</a></p>
+            <p><strong>For an ambulance, police or fire emergency, call <a href="tel:999">999</a>.</strong></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cream-section" id="checkout">
+      <div class="wrap booking-layout">
+        <div>
+          <p class="eyebrow">Before you go</p>
+          <h2>Check-out</h2>
+          <p>These few things make a big difference to the cleaning team. Thank you.</p>
+        </div>
+        <div class="card">
+          <ul class="checklist">
+            <li>Strip used beds and leave the linen on each bed.</li>
+            <li>Put used towels in a bath.</li>
+            <li>Load and start the dishwasher.</li>
+            <li>Take rubbish to the bins at the side of the house.</li>
+            <li>Turn off the lights.</li>
+            <li>Turn down the hot tub temperature.</li>
+            <li>Return the key to the lockbox.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="booking">
+      <div class="wrap booking-layout">
+        <div>
+          <p class="eyebrow">A big house for being together</p>
+          <h2>Thinking of staying?</h2>
+          <p>Discover a spacious five-bedroom retreat in Whitstable, designed for groups of up to 15. Every bedroom has its own en-suite bathroom, giving everyone privacy as well as plenty of room to be together.</p>
+          <p>Gather around the large dining table, settle into the cinema room, play in the games and music room, or relax in the private garden and hot tub.</p>
+          <ul class="feature-list">
+            <li>Sleeps up to 15</li>
+            <li>Five en-suites</li>
+            <li>Cinema room</li>
+            <li>Games and music room</li>
+            <li>Dining for 15</li>
+            <li>Private hot tub</li>
+            <li>Large equipped kitchen</li>
+            <li>Near the sea</li>
+          </ul>
+          <div class="button-row" style="justify-content:flex-start;margin-top:25px">
+            <!-- Replace # with your booking page URL -->
+            <a class="button alt" href="#">Check availability</a>
+          </div>
+        </div>
+        <div class="image-placeholder">
+          Add a strong interior or garden photograph here.<br>
+          Suggested filename: assets/house-booking-feature.jpg
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-grid">
+      <div>
+        <p class="footer-title">The Old Doctor’s Manor House</p>
+        <p>59 Northwood Road, Whitstable, CT5 2HA</p>
+      </div>
+      <div>
+        <p><strong>During your stay</strong><br><a href="mailto:jmsflms@gmail.com">Email us</a><br><a href="https://wa.me/17259105068">WhatsApp us</a></p>
+      </div>
+      <div>
+        <p><strong>House essentials</strong><br>No smoking<br>Wi-Fi included<br>Private garden and hot tub</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector('.menu-button');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuButton.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', isOpen);
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuButton.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    const passwordButton = document.querySelector('#show-password');
+    const passwordText = document.querySelector('#wifi-password');
+    let passwordVisible = false;
+
+    passwordButton.addEventListener('click', () => {
+      passwordVisible = !passwordVisible;
+      passwordText.textContent = passwordVisible ? 'ManorHouse59' : '••••••••••••';
+      passwordButton.textContent = passwordVisible ? 'Hide password' : 'Show password';
+    });
+
+    // Open an accordion section when a quick link points directly to it.
+    function openLinkedDetails() {
+      const target = document.querySelector(window.location.hash);
+      if (target && target.tagName === 'DETAILS') target.open = true;
+    }
+    window.addEventListener('hashchange', openLinkedDetails);
+    openLinkedDetails();
+  </script>
+</body>
+</html>

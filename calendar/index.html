@@ -14,7 +14,7 @@ function pricing(){
  return [type==='house'?'Large Holiday Home':'Run Club Weekender',type==='house'?'Two nights in Whitstable':'A weekend away for run clubs','Minimum 10 people · £120 per person'+(type==='house'?' · Longer stay? Get in touch.':''),winter?'£100pp WINTER OFFER (Jan–Mar)':''];
 }
 function eligible(dt){
- if(type==='hod')return dt.getDay()===0||dt.getDay()===3||specialDates.has(dateKey(dt));
+ if(type==='hod')return dt.getDay()===0||dt.getDay()===3||dt.getDay()===5||specialDates.has(dateKey(dt));
  return dt.getDay()===5;
 }
 function records(iso){
@@ -35,7 +35,7 @@ function render(){
   const b=document.createElement('button');b.type='button';b.className='day'+(available?' available':soldOut?' soldout':' unavailable')+(iso===chosen?' choose':'');
   b.disabled=!available;
   let label='';
-  if(applicable){label=!feed?(error?'Check dates':'Loading…'):available?'£'+(type==='hod'?(dt.getDay()===0||dt.getDay()===3||specialDates.has(iso)?120:166):([0,1,2].includes(dt.getMonth())?100:120))+'pp':'SOLD OUT';}
+  if(applicable){label=!feed?(error?'Check dates':'Loading…'):available?'£'+(type==='hod'?(dt.getDay()===5?166:120):([0,1,2].includes(dt.getMonth())?100:120))+'pp':'SOLD OUT';}
   b.innerHTML='<b>'+d+'</b><small>'+label+'</small>';
   b.addEventListener('click',()=>{chosen=iso;render()});grid.append(b);
  }

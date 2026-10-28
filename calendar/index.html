@@ -36,7 +36,7 @@ function render(){
   b.disabled=!available;
   let label='';
   if(applicable){label=!feed?(error?'Check dates':'Loading…'):available?'£'+(type==='hod'?(iso==='2026-12-18'?120:(dt.getDay()===5?166:120)):([0,1,2].includes(dt.getMonth())?100:120))+'pp':'SOLD OUT';}
-  b.innerHTML='<b>'+d+'</b><small>'+label+'</small>';
+  b.innerHTML='<b>'+d+'</b><small>'+label+(available&&type==='hod'&&dt.getMonth()===11?' 🎄':'')+'</small>';
   b.addEventListener('click',()=>{chosen=iso;render()});grid.append(b);
  }
  const msg="Hello, I'd like to enquire about "+names[type]+(chosen?' starting '+chosen:'')+" for a group of at least 10. Please confirm availability and total price.";

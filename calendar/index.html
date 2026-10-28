@@ -35,7 +35,7 @@ function render(){
   const b=document.createElement('button');b.type='button';b.className='day'+(available?' available':soldOut?' soldout':' unavailable')+(iso===chosen?' choose':'');
   b.disabled=!available;
   let label='';
-  if(applicable){label=!feed?(error?'Check dates':'Loading…'):available?'Ask to confirm':'SOLD OUT';}
+  if(applicable){label=!feed?(error?'Check dates':'Loading…'):available?'AVAILABLE':'SOLD OUT';}
   b.innerHTML='<b>'+d+'</b><small>'+label+'</small>';
   b.addEventListener('click',()=>{chosen=iso;render()});grid.append(b);
  }

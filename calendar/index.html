@@ -9,7 +9,7 @@ const specialDates=new Set(['2026-12-27','2026-12-28']);
 const manuallySoldOut=new Set(['2026-11-20']);
 const dateKey=d=>[d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-');
 function pricing(){
- const winter=[0,1,2].includes(month.getMonth());
+ const winter=month<new Date(2027,3,1);
  if(type==='hod')return ['House of Deceit','An immersive Traitors weekend experience','Minimum 10 people · Friday £166pp · Sunday–Tuesday £120pp','🎄 Friendsmas special £120pp — ask about eligible dates'];
  return [type==='house'?'Large Holiday Home':'Run Club Weekender',type==='house'?'Two nights in Whitstable':'A weekend away for run clubs','Minimum 10 people · £120 per person'+(type==='house'?' · Longer stay? Get in touch.':''),winter?'£100pp WINTER OFFER (Jan–Mar)':''];
 }

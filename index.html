@@ -77,7 +77,7 @@ h2{font-size:clamp(1.9rem,4vw,2.9rem)}
 #other-activities{scroll-margin-top:90px;background:#f5f3ed;padding:65px 20px;color:#18393e}
 #other-activities .activities-wrap{max-width:1120px;margin:auto}
 #other-activities h2{color:inherit}
-.activity-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:28px}
+.activity-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:28px}
 .activity-link{display:block;min-width:0;background:#fff;color:#18393e;text-decoration:none;border:1px solid #deded5;border-radius:10px;overflow:hidden}
 .activity-link img{display:block;width:100%;height:auto;aspect-ratio:1200/630;object-fit:contain;background:#fff}
 .activity-link h3{margin:0;padding:20px;font:700 1.1rem/1.35 Arial,Helvetica,sans-serif;letter-spacing:normal;color:inherit}
@@ -105,4 +105,5 @@ h2{font-size:clamp(1.9rem,4vw,2.9rem)}
 <a class="activity-link" href="https://www.houseofdeceit.com/"><img src="https://www.houseofdeceit.com/assets/logos/house-of-deceit.jpg" alt="House of Deceit" loading="lazy"><h3>House of Deceit</h3></a>
 <a class="activity-link" href="/runclub-weekend/"><img src="/assets/run-club-weekender.jpg" alt="Run Club Weekender" loading="lazy"><h3>Run Club Weekender</h3></a>
 <a class="activity-link" href="/"><img src="/assets/whitstable-holiday-home.jpg" alt="The Old Doctor’s Manor House" loading="lazy"><h3>The Old Doctor’s Manor House</h3></a>
+<a class="activity-link" href="mailto:jmsflms@gmail.com?subject=Corporate%20away%20day%20enquiry"><img src="/assets/awayday.jpg" alt="Corporate away days at The Old Doctor’s Manor House" loading="lazy"><h3>Corporate Away Days</h3></a>
 </div></div></section></main><footer><div class="wrap footer-grid"><div><p class="footer-title">The Old Doctor’s Manor House</p><p>59 Northwood Road, Whitstable, CT5 2HA</p></div><div><p><strong>During your stay</strong><br><a href="mailto:jmsflms@gmail.com">Email us</a><br><a href="https://wa.me/17259105068">WhatsApp us</a></p></div><div><p><strong>House essentials</strong><br>No smoking<br>Wi-Fi included<br>Private garden & hot tub</p></div></div></footer><script>const b=document.querySelector('.menu-button'),n=document.querySelector('.nav-links');b.addEventListener('click',()=>n.classList.toggle('open'));n.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>n.classList.remove('open')));document.querySelectorAll('.photo-room').forEach(room=>{const photos=room.dataset.photos.split('|'),img=room.querySelector('.room-photo');let i=-1;room.addEventListener('click',()=>{i++;if(i>=photos.length){i=-1;room.classList.remove('show-photo');img.removeAttribute('src');return}img.src=photos[i];room.classList.add('show-photo')})});</script></body></html>
